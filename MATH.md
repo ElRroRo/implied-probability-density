@@ -313,7 +313,7 @@ the rate at horizon $\tau$ is obtained by **linear interpolation** on the
 $(\text{tenor}, \rho)$ points, with flat extrapolation past the ends:
 
 $$
-r(\tau) = \text{interp}\big(\tau;\ \{(\text{tenor}_k, \rho_k)\}\big).
+r(\tau) = \text{interp}\!\left(\tau;\ \left\{(\text{tenor}_k, \rho_k)\right\}\right).
 \quad (8.1)
 $$
 
@@ -497,7 +497,7 @@ each cone expiry $T_k$ (with $\tau_k$, density $p_k$ on its own grid) we:
    knot maturities $\{0, \tau_1, \tau_2, \dots\}$:
 
 $$
-\tilde p(S_j, \tau^{*}_\ell) = \text{interp}\big(\tau^{*}_\ell;\ \{(\tau_k, P_{jk})\}\big).
+\tilde p(S_j, \tau^{*}_{\ell}) = \text{interp}\!\left(\tau^{*}_{\ell};\ \left\{(\tau_k, P_{jk})\right\}\right)
 $$
 
 4. **Render.** Cell color uses the **per-column-normalized** density
@@ -518,11 +518,11 @@ The 3-D surface plots the **fitted** smile of each cone expiry against
 moneyness and maturity:
 
 $$
-\Sigma(m, \tau_k) = \hat\sigma_k\!\big(m \cdot S_0\big)\times 100\%,
+\Sigma(m, \tau_k) = \hat{\sigma}_k\!\left(m \cdot S_0\right)\times 100\%,
 \qquad m = \frac{K}{S_0},
 $$
 
-where $\hat\sigma_k$ is the §5 smoothing spline for expiry $k$. Each smile is
+where $\hat{\sigma}_k$ is the §5 smoothing spline for expiry $k$. Each smile is
 resampled onto a shared moneyness grid $m\in[0.80, 1.20]$; points outside an
 expiry's traded strike range are left as **gaps** (no extrapolation), which is
 why near-dated maturities show a narrow ATM ribbon that widens with $\tau$.
