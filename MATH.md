@@ -65,7 +65,7 @@ Because $(S-K)^+ = 0$ for $S < K$, the lower limit collapses to $K$:
 
 $$
 \boxed{\;c(K) \;=\; e^{-r\tau} \int_{K}^{\infty} (S - K)\, q(S)\, dS\;}
-\tag{2.1}
+\quad (2.1)
 $$
 
 This single equation is the foundation: it links the **observable** call-price
@@ -83,7 +83,7 @@ is the **forward price**:
 
 $$
 \mathbb{E}^{\mathbb{Q}}[S_T] = \int_0^\infty S\,q(S)\,dS = S_0 e^{r\tau} =: F.
-\tag{2.2}
+\quad (2.2)
 $$
 
 Equation (2.2) is the model's primary internal sanity check (the code reports
@@ -111,7 +111,7 @@ form:
 
 $$
 \boxed{\;c_{\mathrm{BS}}(S_0,K,r,\sigma,\tau) = S_0\,\Phi(d_1) - K e^{-r\tau}\,\Phi(d_2)\;}
-\tag{3.1}
+\quad (3.1)
 $$
 
 $$
@@ -125,7 +125,7 @@ volatility), needed for the inversion below and always positive, is
 
 $$
 \frac{\partial c_{\mathrm{BS}}}{\partial \sigma} = S_0\,\phi(d_1)\sqrt{\tau} \;>\; 0,
-\tag{3.2}
+\quad (3.2)
 $$
 
 with $\phi$ the standard normal PDF.
@@ -144,7 +144,7 @@ volatility** $\sigma_i$ is the unique value solving
 
 $$
 c_{\mathrm{BS}}(S_0, K_i, r, \sigma_i, \tau) = c_i^{\mathrm{mkt}}.
-\tag{4.1}
+\quad (4.1)
 $$
 
 Uniqueness is guaranteed because $c_{\mathrm{BS}}$ is **strictly increasing**
@@ -176,7 +176,7 @@ We fit a **cubic smoothing spline** $\hat\sigma(K)$ (degree $k=3$) minimizing
 
 $$
 \sum_{i} \big(\hat\sigma(K_i) - \sigma_i\big)^2 \;\le\; s,
-\tag{5.1}
+\quad (5.1)
 $$
 
 where $s$ is a smoothing budget. With $s=0$ the spline interpolates every point
@@ -198,7 +198,7 @@ traded strikes** — and convert back to prices with Black–Scholes:
 
 $$
 \boxed{\;c(K_j) \;=\; c_{\mathrm{BS}}\!\big(S_0,\,K_j,\,r,\,\hat\sigma(K_j),\,\tau\big)\;}
-\tag{5.2}
+\quad (5.2)
 $$
 
 The result is a smooth, dense, arbitrage-respecting call curve $c(K)$ ready for
@@ -214,7 +214,7 @@ $\sigma$ governs all strikes.)
 
 $$
 \boxed{\;q(S_T) \;=\; e^{r\tau}\,\frac{\partial^2 c(K)}{\partial K^2}\bigg|_{K=S_T}\;}
-\tag{6.1}
+\quad (6.1)
 $$
 
 **Derivation.** Start from (2.1) and differentiate with respect to $K$. The
@@ -237,7 +237,7 @@ $$
 = -\,e^{-r\tau}\int_{K}^{\infty} q(S)\,dS
 = -\,e^{-r\tau}\,\big[1 - Q(K)\big]
 = e^{-r\tau}\big[Q(K) - 1\big],
-\tag{6.2}
+\quad (6.2)
 $$
 
 where $Q(K)=\int_0^K q(S)\,dS$ is the risk-neutral CDF. Equation (6.2) is itself
@@ -258,7 +258,7 @@ Solving for $q$ and renaming the evaluation point $K = S_T$ gives (6.1). $\;\bla
 
 Intuitively, a *tight* butterfly spread — long calls at $K-\Delta K$ and
 $K+\Delta K$, short two at $K$ — pays off only if $S_T \approx K$. Its
-(discounted) price per unit width$^2$ is exactly the probability mass near $K$,
+(discounted) price per unit width² is exactly the probability mass near $K$,
 i.e. the density. Equation (6.1) is the continuum limit of that butterfly.
 
 ---
@@ -270,7 +270,7 @@ On the dense uniform grid (step $\Delta K$) we approximate (6.1) with the
 
 $$
 \boxed{\;q(K_j) \;\approx\; e^{r\tau}\,\frac{c(K_{j+1}) - 2\,c(K_j) + c(K_{j-1})}{(\Delta K)^2}\;}
-\tag{7.1}
+\quad (7.1)
 $$
 
 A Taylor expansion shows this is second-order accurate:
@@ -314,7 +314,7 @@ $(\text{tenor}, \rho)$ points, with flat extrapolation past the ends:
 
 $$
 r(\tau) = \operatorname{interp}\big(\tau;\ \{(\text{tenor}_k, \rho_k)\}\big).
-\tag{8.1}
+\quad (8.1)
 $$
 
 This $r(\tau)$ feeds the discounting in (3.1), (5.2), (6.1), (7.1) and the
@@ -352,7 +352,7 @@ $$
 e^{-r\tau}\,q(S) = M(S)\,p(S)
 \quad\Longrightarrow\quad
 \boxed{\;\frac{q(S)}{p(S)} \;\propto\; M(S)\;}
-\tag{9.1}
+\quad (9.1)
 $$
 
 So the **Radon–Nikodym derivative** $\frac{d\mathbb{Q}}{d\mathbb{P}}$ is
@@ -381,7 +381,7 @@ $$
 M(S) = e^{-\delta\tau}\,\frac{U'(S)}{U'(S_0)}
 = e^{-\delta\tau}\left(\frac{S}{S_0}\right)^{-\gamma}
 \;\propto\; S^{-\gamma},
-\tag{10.1}
+\quad (10.1)
 $$
 
 where $\delta$ is the subjective discount rate (an irrelevant constant here, as
@@ -401,7 +401,7 @@ After normalizing to a density (§11), with $\gamma = 2.5$:
 
 $$
 \boxed{\;p(S_T) \;=\; \frac{S_T^{\,\gamma}\,q(S_T)}{\displaystyle\int_0^\infty S^{\,\gamma}\,q(S)\,dS}\;}
-\tag{10.2}
+\quad (10.2)
 $$
 
 **Direction of the shift.** The weight $S^{\gamma}$ is increasing, so it moves
@@ -436,7 +436,7 @@ $$
 \hat f(S_j) = \frac{f(S_j)}{\displaystyle\int f\,dS},
 \qquad
 \int f\,dS \approx \sum_{j} \frac{f(S_{j+1}) + f(S_j)}{2}\,(S_{j+1}-S_j).
-\tag{11.1}
+\quad (11.1)
 $$
 
 This is applied to $q$ after (7.1) and again to the CRRA numerator in (10.2),
@@ -493,11 +493,11 @@ each cone expiry $T_k$ (with $\tau_k$, density $p_k$ on its own grid) we:
 2. **Anchor at "now"** with a narrow Gaussian $p_0$ centered at $S_0$
    (the price is known today), at $\tau_0 = 0$.
 3. **Interpolate in time.** For a dense set of future business days with
-   horizons $\{\tau^{\*}_\ell\}$, linearly interpolate each price row across the
+   horizons $\{\tau^{*}_\ell\}$, linearly interpolate each price row across the
    knot maturities $\{0, \tau_1, \tau_2, \dots\}$:
 
 $$
-\tilde p(S_j, \tau^{\*}_\ell) = \operatorname{interp}\big(\tau^{\*}_\ell;\ \{(\tau_k, P_{jk})\}\big).
+\tilde p(S_j, \tau^{*}_\ell) = \operatorname{interp}\big(\tau^{*}_\ell;\ \{(\tau_k, P_{jk})\}\big).
 $$
 
 4. **Render.** Cell color uses the **per-column-normalized** density
