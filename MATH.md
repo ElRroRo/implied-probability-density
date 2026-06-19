@@ -10,10 +10,10 @@ implied-volatility surface.
 
 1. [Notation and setup](#1-notation-and-setup)
 2. [Risk-neutral valuation](#2-risk-neutral-valuation)
-3. [The Black–Scholes call price](#3-the-blackscholes-call-price)
+3. [The Black–Scholes call price](#3-the-black-scholes-call-price)
 4. [Implied volatility inversion](#4-implied-volatility-inversion)
 5. [The volatility smile and the smoothing spline](#5-the-volatility-smile-and-the-smoothing-spline)
-6. [The Breeden–Litzenberger theorem](#6-the-breedenlitzenberger-theorem)
+6. [The Breeden–Litzenberger theorem](#6-the-breeden-litzenberger-theorem)
 7. [Numerical second derivative](#7-numerical-second-derivative)
 8. [The risk-free term structure](#8-the-risk-free-term-structure)
 9. [From risk-neutral to real-world: the pricing kernel](#9-from-risk-neutral-to-real-world-the-pricing-kernel)
@@ -172,10 +172,10 @@ We have discrete pairs $(K_i, \sigma_i)$. Breeden–Litzenberger needs a
 **twice-differentiable** call-price function, so we first build a smooth
 volatility function $\sigma(K)$.
 
-We fit a **cubic smoothing spline** $\hat\sigma(K)$ (degree $k=3$) minimizing
+We fit a **cubic smoothing spline** $\hat{\sigma}(K)$ (degree $k=3$) minimizing
 
 $$
-\sum_{i} \big(\hat\sigma(K_i) - \sigma_i\big)^2 \;\le\; s,
+\sum_{i} \big(\hat{\sigma}(K_i) - \sigma_i\big)^2 \;\le\; s,
 \quad (5.1)
 $$
 
@@ -197,7 +197,7 @@ step $\Delta K$) spanning the observed strike range — **no extrapolation beyon
 traded strikes** — and convert back to prices with Black–Scholes:
 
 $$
-\boxed{\;c(K_j) \;=\; c_{\mathrm{BS}}\!\big(S_0,\,K_j,\,r,\,\hat\sigma(K_j),\,\tau\big)\;}
+\boxed{\;c(K_j) \;=\; c_{\mathrm{BS}}\!\big(S_0,\,K_j,\,r,\,\hat{\sigma}(K_j),\,\tau\big)\;}
 \quad (5.2)
 $$
 
@@ -433,15 +433,15 @@ non-negative array $f$ on grid $\{S_j\}$ we rescale by the **trapezoidal**
 integral:
 
 $$
-\hat f(S_j) = \frac{f(S_j)}{\displaystyle\int f\,dS},
+\hat{f}(S_j) = \frac{f(S_j)}{\displaystyle\int f\,dS},
 \qquad
 \int f\,dS \approx \sum_{j} \frac{f(S_{j+1}) + f(S_j)}{2}\,(S_{j+1}-S_j).
 \quad (11.1)
 $$
 
 This is applied to $q$ after (7.1) and again to the CRRA numerator in (10.2),
-guaranteeing $\int q\,dS = \int p\,dS = 1$ (the code asserts both are $\approx
-1.0000$). The discrete analogue of (10.2) actually used is
+guaranteeing $\int q\,dS = \int p\,dS = 1$ (the code asserts both are
+$\approx 1.0000$). The discrete analogue of (10.2) actually used is
 
 $$
 p(S_j) = \frac{S_j^{\gamma}\,q(S_j)}{\sum_k S_k^{\gamma}\,q(S_k)\,\Delta S_k}.
@@ -497,12 +497,12 @@ each cone expiry $T_k$ (with $\tau_k$, density $p_k$ on its own grid) we:
    knot maturities $\{0, \tau_1, \tau_2, \dots\}$:
 
 $$
-\tilde p(S_j, \tau^{*}_{\ell}) = \text{interp}\!\left(\tau^{*}_{\ell};\ \left\{(\tau_k, P_{jk})\right\}\right)
+\tilde{p}(S_j, \tau^{*}_{\ell}) = \text{interp}\!\left(\tau^{*}_{\ell};\ \left\{(\tau_k, P_{jk})\right\}\right)
 $$
 
 4. **Render.** Cell color uses the **per-column-normalized** density
-   $\tilde p / \max_j \tilde p$ (so the widening cloud stays visible at every
-   horizon), while the **hover reports the true** $\tilde p(S_j)\times100\%$ per
+   $\tilde{p} / \max_j \tilde{p}$ (so the widening cloud stays visible at every
+   horizon), while the **hover reports the true** $\tilde{p}(S_j)\times100\%$ per
    \$1. The cloud therefore fans out as uncertainty accumulates, exactly as a
    variance that grows roughly like $\sigma^2\tau$ should.
 
@@ -581,7 +581,7 @@ term-structure model.
 | $\tau,\,T$ | time to expiry / maturity | §1 |
 | $K$ | strike | §1 |
 | $r(\tau)$ | risk-free rate at horizon $\tau$ | §8 |
-| $\sigma,\,\hat\sigma(K)$ | volatility / fitted smile | §3, §5 |
+| $\sigma,\,\hat{\sigma}(K)$ | volatility / fitted smile | §3, §5 |
 | $\Phi,\,\phi$ | normal CDF / PDF | §3 |
 | $c(K)$ | call price function | §2 |
 | $Q(K),\,q(S)$ | risk-neutral CDF / density | §6, §2 |
