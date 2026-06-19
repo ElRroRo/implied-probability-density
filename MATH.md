@@ -184,7 +184,7 @@ where $s$ is a smoothing budget. With $s=0$ the spline interpolates every point
 data-driven default,
 
 $$
-s = m \cdot n \cdot \widehat{\operatorname{Var}}(\sigma_i) \cdot \tfrac12,
+s = m \cdot n \cdot \widehat{\text{Var}}(\sigma_i) \cdot \tfrac12,
 $$
 
 where $n$ is the number of strikes and $m\in[0,2]$ is the UI "smoothing"
@@ -313,7 +313,7 @@ the rate at horizon $\tau$ is obtained by **linear interpolation** on the
 $(\text{tenor}, \rho)$ points, with flat extrapolation past the ends:
 
 $$
-r(\tau) = \operatorname{interp}\big(\tau;\ \{(\text{tenor}_k, \rho_k)\}\big).
+r(\tau) = \text{interp}\big(\tau;\ \{(\text{tenor}_k, \rho_k)\}\big).
 \quad (8.1)
 $$
 
@@ -497,7 +497,7 @@ each cone expiry $T_k$ (with $\tau_k$, density $p_k$ on its own grid) we:
    knot maturities $\{0, \tau_1, \tau_2, \dots\}$:
 
 $$
-\tilde p(S_j, \tau^{*}_\ell) = \operatorname{interp}\big(\tau^{*}_\ell;\ \{(\tau_k, P_{jk})\}\big).
+\tilde p(S_j, \tau^{*}_\ell) = \text{interp}\big(\tau^{*}_\ell;\ \{(\tau_k, P_{jk})\}\big).
 $$
 
 4. **Render.** Cell color uses the **per-column-normalized** density
