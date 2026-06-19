@@ -313,7 +313,7 @@ the rate at horizon $\tau$ is obtained by **linear interpolation** on the
 $(\text{tenor}, \rho)$ points, with flat extrapolation past the ends:
 
 $$
-r(\tau) = \text{interp}\!\left(\tau;\ \left\{(\text{tenor}_k, \rho_k)\right\}\right).
+r(\tau) = \text{interp}\!\left(\tau;\ \left\\{(\text{tenor}_k, \rho_k)\right\\}\right).
 \quad (8.1)
 $$
 
@@ -493,11 +493,11 @@ each cone expiry $T_k$ (with $\tau_k$, density $p_k$ on its own grid) we:
 2. **Anchor at "now"** with a narrow Gaussian $p_0$ centered at $S_0$
    (the price is known today), at $\tau_0 = 0$.
 3. **Interpolate in time.** For a dense set of future business days with
-   horizons $\{\tau^{*}_\ell\}$, linearly interpolate each price row across the
+   horizons $\{\tau^{\*}_\ell\}$, linearly interpolate each price row across the
    knot maturities $\{0, \tau_1, \tau_2, \dots\}$:
 
 $$
-\tilde{p}(S_j, \tau^{*}_{\ell}) = \text{interp}\!\left(\tau^{*}_{\ell};\ \left\{(\tau_k, P_{jk})\right\}\right)
+\tilde{p}(S_j, \tau^{\*}_{\ell}) = \text{interp}\!\left(\tau^{\*}_{\ell};\ \left\\{(\tau_k, P_{jk})\right\\}\right)
 $$
 
 4. **Render.** Cell color uses the **per-column-normalized** density
